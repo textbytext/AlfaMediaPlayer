@@ -34,15 +34,11 @@ public class MediaElementWrapper : IMediaPlayerController
 		_player.Stop();
 	}
 
-	public TimeSpan GetCurrentPosition()
-	{
-		return _player.Position;
-	}
+	public TimeSpan Position => _player.Position;
 
-	public TimeSpan GetFileDuration()
-	{
-		return _player.NaturalDuration.HasTimeSpan ? _player.NaturalDuration.TimeSpan : TimeSpan.FromSeconds(0);
-	}
+	public TimeSpan Duration => _player.NaturalDuration.HasTimeSpan 
+		? _player.NaturalDuration.TimeSpan
+		: TimeSpan.FromSeconds(0);
 
 	public string? GetCurrentFilePath()
 	{
@@ -66,7 +62,7 @@ public class MediaElementWrapper : IMediaPlayerController
 
 	public bool IsStopped => GetMediaState() == MediaState.Stop;
 
-	public bool IsEnd => GetCurrentPosition() == GetFileDuration();
+	public bool IsEnd => Position == Duration;
 
 	private MediaState? GetMediaState()
 	{

@@ -75,7 +75,7 @@ namespace AlfaMediaPlayerWpf.App
 				return;
 			}
 
-			TimePoints.Init(mf, _player.GetCurrentPosition());
+			TimePoints.Init(mf, _player.Position);
 			TimePointsPopup.Show();
 		}
 
@@ -94,7 +94,7 @@ namespace AlfaMediaPlayerWpf.App
 
 			var max = MediaPositionSlider.Maximum;
 			var position = e.NewValue;
-			var dur = _player.GetFileDuration();
+			var dur = _player.Duration;
 			var start = dur * position / max;
 
 			_megaBus.Send(new PlayerSetPosition(start));
@@ -143,16 +143,16 @@ namespace AlfaMediaPlayerWpf.App
 
 			FileNameLable.Text = Path.GetFileNameWithoutExtension(filePath);
 
-			var pos = _player.GetCurrentPosition().To_hh_mm_ss();
-			var dur = _player.GetFileDuration().To_hh_mm_ss();
+			var pos = _player.Position.To_hh_mm_ss();
+			var dur = _player.Duration.To_hh_mm_ss();
 			FilePositionTime.Content = $"{pos} of {dur}";
 
-			if (_player.GetFileDuration().TotalSeconds > 0)
+			if (_player.Duration.TotalSeconds > 0)
 			{
 				TheEndPanel.Hide();
 
 				MediaPositionSlider.IsEnabled = false;
-				MediaPositionSlider.Value = MediaPositionSlider.Maximum * _player.GetCurrentPosition().TotalSeconds / _player.GetFileDuration().TotalSeconds;
+				MediaPositionSlider.Value = MediaPositionSlider.Maximum * _player.Position.TotalSeconds / _player.Duration.TotalSeconds;
 				MediaPositionSlider.IsEnabled = true;
 			}
 			if (pos == dur)
@@ -178,7 +178,7 @@ namespace AlfaMediaPlayerWpf.App
 				return;
 			}
 
-			var position = _player.GetCurrentPosition();
+			var position = _player.Position;
 			var filePath = _player.GetCurrentFilePath();
 			if (File.Exists(filePath))
 			{
@@ -203,7 +203,7 @@ namespace AlfaMediaPlayerWpf.App
 					break;
 
 				case PlayerIncPosition pip:
-					_player.SetPosition(_player.GetCurrentPosition().Add(pip.duration));
+					_player.SetPosition(_player.Position.Add(pip.duration));
 					break;
 
 				case PlayerSetRepeat psr:
@@ -244,13 +244,14 @@ namespace AlfaMediaPlayerWpf.App
 
 			var start = mediaFile.Position;
 			_player.OpenFile(mediaFile.FilePath);
+			_player.Play();
 
-			if (mediaFile.Position == _player.GetFileDuration())
+			if (_player.Duration.TotalSeconds > 5 && _player.Duration - mediaFile.Position <= TimeSpan.FromSeconds(5))
 			{
 				start = TimeSpan.Zero;
 			}
 			_player.SetPosition(start);
-			_player.Play();
+			
 			RepeatButton.IsChecked = mediaFile.Repeat;
 
 			SavePlayerState();

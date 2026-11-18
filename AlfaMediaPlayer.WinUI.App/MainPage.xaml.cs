@@ -1,7 +1,5 @@
 using AlfaMediaPlayer.Domain;
 using AlfaMediaPlayer.WinUI.App.UI;
-using Microsoft.UI.Input;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
@@ -116,7 +114,7 @@ namespace AlfaMediaPlayer.WinUI.App
 
 		private void TimePointsButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
 		{
-			TimePoints.Init(GetCurrentMediaFile(), _player.GetCurrentPosition());
+			TimePoints.Init(GetCurrentMediaFile(), _player.Position);
 			TimeMarksPopup.Show();
 		}
 
@@ -135,7 +133,7 @@ namespace AlfaMediaPlayer.WinUI.App
 
 			var max = MediaPositionSlider.Maximum;
 			var position = e.NewValue;
-			var dur = _player.GetFileDuration();
+			var dur = _player.Duration;
 			var start = dur * position / max;
 
 			_megaBus.Send(new PlayerSetPosition(start));
@@ -172,17 +170,17 @@ namespace AlfaMediaPlayer.WinUI.App
 				return;
 			}
 
-			if (mediaFile is not null)
+			var start = mediaFile.Position;
+			_player.OpenFile(mediaFile.FilePath);
+			_player.Play();
+
+			if (_player.Duration.TotalSeconds > 5 && _player.Duration - mediaFile.Position <= TimeSpan.FromSeconds(5))
 			{
-				var start = mediaFile.Position - TimeSpan.FromSeconds(5.0);
-				if (start.TotalSeconds < 0.0)
-				{
-					start = mediaFile.Position;
-				}
-				_player.OpenFile(mediaFile.FilePath);
-				_player.SetPosition(start);
-				RepeatButton.IsChecked = mediaFile.Repeat;
+				start = TimeSpan.Zero;
 			}
+			_player.SetPosition(start);
+
+			RepeatButton.IsChecked = mediaFile.Repeat;
 
 			SavePlayerState();
 
@@ -196,7 +194,7 @@ namespace AlfaMediaPlayer.WinUI.App
 				return;
 			}
 
-			var position = _player.GetCurrentPosition();
+			var position = _player.Position;
 			var filePath = _player.GetCurrentFilePath();
 			if (File.Exists(filePath))
 			{
@@ -216,14 +214,14 @@ namespace AlfaMediaPlayer.WinUI.App
 
 			FileNameLable.Text = Path.GetFileNameWithoutExtension(filePath);
 
-			var pos = _player.GetCurrentPosition().ToString("hh':'mm':'ss");
-			var dur = _player.GetFileDuration().ToString("hh':'mm':'ss");
+			var pos = _player.Position.ToString("hh':'mm':'ss");
+			var dur = _player.Duration.ToString("hh':'mm':'ss");
 			FilePositionTime.Text = $"{pos} of {dur}";
 
-			if (_player.GetFileDuration().TotalSeconds > 0)
+			if (_player.Duration.TotalSeconds > 0)
 			{
 				MediaPositionSlider.IsEnabled = false;
-				MediaPositionSlider.Value = MediaPositionSlider.Maximum * _player.GetCurrentPosition().TotalSeconds / _player.GetFileDuration().TotalSeconds;
+				MediaPositionSlider.Value = MediaPositionSlider.Maximum * _player.Position.TotalSeconds / _player.Duration.TotalSeconds;
 				MediaPositionSlider.IsEnabled = true;
 			}
 			if (pos == dur)
@@ -267,7 +265,7 @@ namespace AlfaMediaPlayer.WinUI.App
 					break;
 
 				case PlayerIncPosition pip:
-					_player.SetPosition(_player.GetCurrentPosition().Add(pip.duration));
+					_player.SetPosition(_player.Position.Add(pip.duration));
 					break;
 
 				case PlayerSetRepeat psr:
@@ -292,6 +290,6 @@ namespace AlfaMediaPlayer.WinUI.App
 			}
 		}
 
-		
+
 	}
 }

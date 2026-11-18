@@ -5,10 +5,10 @@ public interface IMediaPlayerController
 	void OpenFile(string filePath);
 	void Play();
 	void Stop();
-	TimeSpan GetCurrentPosition();
+	TimeSpan Position { get; }
 	string? GetCurrentFilePath();
 	void SetPosition(TimeSpan position);
-	TimeSpan GetFileDuration();
+	TimeSpan Duration { get; }	
 	void Pause();
 	bool IsPlaying { get; }
 	bool IsStopped { get; }

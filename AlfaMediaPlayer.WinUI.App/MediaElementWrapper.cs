@@ -38,15 +38,9 @@ public class MediaElementWrapper : IMediaPlayerController
 	public bool IsStopped => _player.CurrentState == MediaPlayerState.Stopped;
 	public bool IsPaused => _player.CurrentState == MediaPlayerState.Paused;
 
-	public TimeSpan GetCurrentPosition()
-	{
-		return _player.Position;
-	}
+	public TimeSpan Position => _player.Position;
 
-	public TimeSpan GetFileDuration()
-	{
-		return _player.NaturalDuration;
-	}
+	public TimeSpan Duration => _player.NaturalDuration;
 
 	public string? GetCurrentFilePath()
 	{
@@ -75,6 +69,6 @@ public class MediaElementWrapper : IMediaPlayerController
 
 	private bool HasFile => _player.Source as MediaSource is not null;
 
-	public bool IsEnd => GetCurrentPosition() == GetFileDuration();
+	public bool IsEnd => Position == Duration;
 }
 
