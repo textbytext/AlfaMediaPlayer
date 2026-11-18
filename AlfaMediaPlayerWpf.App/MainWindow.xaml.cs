@@ -242,12 +242,12 @@ namespace AlfaMediaPlayerWpf.App
 				return;
 			}
 
+			var start = mediaFile.Position;
 			_player.OpenFile(mediaFile.FilePath);
 
-			var start = mediaFile.Position - TimeSpan.FromSeconds(5.0);
-			if (start.TotalSeconds < 0.0)
+			if (mediaFile.Position == _player.GetFileDuration())
 			{
-				start = mediaFile.Position;
+				start = TimeSpan.Zero;
 			}
 			_player.SetPosition(start);
 			_player.Play();
