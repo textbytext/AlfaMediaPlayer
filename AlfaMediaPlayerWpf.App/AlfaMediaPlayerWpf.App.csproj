@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net11.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Abstractions\**" />
+    <EmbeddedResource Remove="Abstractions\**" />
+    <None Remove="Abstractions\**" />
+    <Page Remove="Abstractions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="images\add.png" />
+    <None Remove="images\book.png" />
+    <None Remove="images\book.svg" />
+    <None Remove="images\close.png" />
+    <None Remove="images\cycle.png" />
+    <None Remove="images\cycle.svg" />
+    <None Remove="images\delete.png" />
+    <None Remove="images\file_open.png" />
+    <None Remove="images\file_open.svg" />
+    <None Remove="images\list.png" />
+    <None Remove="images\list.svg" />
+    <None Remove="images\pause.png" />
+    <None Remove="images\pause.svg" />
+    <None Remove="images\play.png" />
+    <None Remove="images\play_arrow.png" />
+    <None Remove="images\play_arrow.svg" />
+    <None Remove="images\save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AlfaMediaPlayer.Domain\AlfaMediaPlayer.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\add.png" />
+    <Resource Include="images\book.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\close.png" />
+    <Resource Include="images\cycle.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\delete.png" />
+    <Resource Include="images\file_open.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\list.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\pause.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\play_arrow.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\save.png" />
+  </ItemGroup>
+
+</Project>

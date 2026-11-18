@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="AlfaMediaPlayer.WinUI.App.UI.AlfaButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AlfaMediaPlayer.WinUI.App.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	Name="root"
+    mc:Ignorable="d">
+	<Button Name="button" Click="button_Click">
+		<StackPanel Orientation="Horizontal">
+			<Image Source="{Binding Path=ImagePath, ElementName=root}" Height="{Binding Path=ImageHeight, ElementName=root}">
+			</Image>
+			<TextBlock x:Name="text" Foreground="{StaticResource TextForeground}"></TextBlock>
+		</StackPanel>
+	</Button>	
+</UserControl>

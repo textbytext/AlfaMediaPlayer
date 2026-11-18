@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AlfaMediaPlayer.WinUI.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AlfaMediaPlayer.WinUI.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

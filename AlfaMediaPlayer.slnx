@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="AlfaMediaPlayer.Domain/AlfaMediaPlayer.Domain.csproj" Id="efb23db8-0584-494d-9a58-a1ee8a0e08ab" />
+  <Project Path="AlfaMediaPlayer.WinUI.App/AlfaMediaPlayer.WinUI.App.csproj" Id="5893e299-10a7-44f8-8363-ed51ec7de654">
+    <Platform Project="x64" />
+    <Deploy />
+  </Project>
+  <Project Path="AlfaMediaPlayerWpf.App/AlfaMediaPlayerWpf.App.csproj" Id="0dcfe106-48da-4677-a2e7-405056c05571" />
+</Solution>

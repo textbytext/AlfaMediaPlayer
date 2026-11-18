@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="AlfaMediaPlayer.WinUI.App.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:AlfaMediaPlayer.WinUI.App"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+	xmlns:base="using:AlfaMediaPlayer.WinUI.App.UI"
+	xmlns:sys="using:System"	
+	mc:Ignorable="d">
+
+	<!--
+        This is the main content area of your application.
+        Add your UI elements here — for example, controls, layouts, and data-bound views.
+        Use 'dotnet new winui-page' to create additional pages and navigate to them via
+        the Frame in MainWindow (RootFrame).
+    -->
+	<Page.KeyboardAccelerators>
+		<KeyboardAccelerator Key="Space" Invoked="KeyboardAccelerator_Invoked"></KeyboardAccelerator>
+		<KeyboardAccelerator Key="Left" Invoked="KeyboardAccelerator_Invoked"></KeyboardAccelerator>
+		<KeyboardAccelerator Key="Right" Invoked="KeyboardAccelerator_Invoked"></KeyboardAccelerator>
+		<KeyboardAccelerator Key="H" Invoked="KeyboardAccelerator_Invoked"></KeyboardAccelerator>
+		<KeyboardAccelerator Key="O" Invoked="KeyboardAccelerator_Invoked"></KeyboardAccelerator>
+		<KeyboardAccelerator Key="P" Invoked="KeyboardAccelerator_Invoked"></KeyboardAccelerator>
+		<KeyboardAccelerator Key="R" Invoked="KeyboardAccelerator_Invoked"></KeyboardAccelerator>
+		<KeyboardAccelerator Key="M" Invoked="KeyboardAccelerator_Invoked"></KeyboardAccelerator>
+	</Page.KeyboardAccelerators>
+	<Grid Padding="5" x:Name="RootGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition Height="auto"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Row="0" Orientation="Horizontal">
+			<base:AlfaButton x:Name="OpenFileButton" Margin="3" Title="Open File" ImagePath="/Assets/images/file_open.svg">
+				<base:AlfaButton.TextInline>
+					<Bold>O</Bold>pen
+				</base:AlfaButton.TextInline>
+			</base:AlfaButton>
+			<base:AlfaButton x:Name="OpenFileListButton" Margin="3" Title="History" ImagePath="/Assets/images/list.svg">
+				<base:AlfaButton.TextInline>
+					<Bold>H</Bold>istory
+				</base:AlfaButton.TextInline>
+			</base:AlfaButton>
+		</StackPanel>
+
+		<MediaPlayerElement Grid.Row="1" Stretch="Uniform" x:Name="Media" AutoPlay="True"></MediaPlayerElement>
+
+		<StackPanel Orientation="Vertical" Grid.Row="2" Name="ControlPanel">
+			<TextBlock x:Name="FileNameLable" TextWrapping="Wrap" FontSize="23" TextAlignment="Center">file name ...</TextBlock>
+
+			<Grid Grid.Row="3">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"></ColumnDefinition>
+					<ColumnDefinition Width="auto"></ColumnDefinition>
+					<ColumnDefinition Width="auto"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="auto"></ColumnDefinition>
+					<ColumnDefinition Width="auto"></ColumnDefinition>
+					<ColumnDefinition Width="auto"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+
+				<base:AlfaButton Grid.Column="0" Margin="3" x:Name="PlayButton" Title="Play" ImagePath="/Assets/images/play_arrow.svg">
+					<base:AlfaButton.TextInline>
+						<Bold>P</Bold>lay
+					</base:AlfaButton.TextInline>
+				</base:AlfaButton>
+				
+				<base:AlfaButton Grid.Column="1" Margin="3" x:Name="PauseButton" Title="Pause" ImagePath="/Assets/images/pause.svg">
+					<base:AlfaButton.TextInline>
+						<Bold>P</Bold>ause
+					</base:AlfaButton.TextInline>
+				</base:AlfaButton>
+
+				<base:AlfaButton Grid.Column="2" Margin="3" x:Name="Dec5SecButton" ImagePath="/Assets/images/left.svg" Title="5s"></base:AlfaButton>
+
+				<StackPanel Grid.Column="3" Orientation="Vertical" Margin="5,0,5,0" HorizontalAlignment="Stretch">
+					<Slider Maximum="1000" Name="MediaPositionSlider"></Slider>
+					<TextBlock Name="FilePositionTime" HorizontalAlignment="Center" FontFamily="Cascadia Mono" Padding="0">time...</TextBlock>
+				</StackPanel>
+
+				<base:AlfaButton Grid.Column="4" Margin="3" x:Name="Add5SecButton" ImagePath="/Assets/images/right.svg" Title="5s"></base:AlfaButton>
+
+				<ToggleButton Grid.Column="5" Margin="3" x:Name="RepeatButton">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Assets/images/cycle.svg" Height="20"></Image>
+						<TextBlock Foreground="{StaticResource TextForeground}">
+							<Bold>R</Bold>epeat
+						</TextBlock>
+					</StackPanel>
+				</ToggleButton>
+
+				<base:AlfaButton Grid.Column="6" Margin="3" x:Name="TimePointsButton" Title="Marks" ImagePath="/Assets/images/book.svg">
+					<base:AlfaButton.TextInline>						
+						<Bold>M</Bold>arks
+					</base:AlfaButton.TextInline>
+				</base:AlfaButton>
+			</Grid>
+		</StackPanel>
+
+		<base:PopupContainerControl Grid.Row="0" Grid.RowSpan="4" Title="History" Visibility="Collapsed" x:Name="FileListPopup">
+			<base:FileListControl/>
+		</base:PopupContainerControl>
+
+		<base:PopupContainerControl Grid.Row="0" Grid.RowSpan="4" Title="Time Marks" Visibility="Collapsed" x:Name="TimeMarksPopup">
+			<base:TimePointsControl/>
+		</base:PopupContainerControl>
+	</Grid>
+</Page>

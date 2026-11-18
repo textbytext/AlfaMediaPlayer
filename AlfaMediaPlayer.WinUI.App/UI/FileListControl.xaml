@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="AlfaMediaPlayer.WinUI.App.UI.FileListControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AlfaMediaPlayer.WinUI.App.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:domain="using:AlfaMediaPlayer.Domain"
+    mc:Ignorable="d">
+	<ListView Background="Transparent"
+			  Name="FileList"
+			  SelectionMode="Single">
+		<ListView.ItemTemplate>
+			<DataTemplate x:DataType="domain:MediaFile">
+				<TextBlock Foreground="{StaticResource TextForeground}" Text="{x:Bind FilePath}"></TextBlock>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+</UserControl>
