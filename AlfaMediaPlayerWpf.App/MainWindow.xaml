@@ -32,9 +32,7 @@
 			</Button>			
 		</StackPanel>
 
-		<StackPanel Grid.Row="1" Background="Black" Focusable="True">
-			<MediaElement Stretch="Uniform" Name="Media" LoadedBehavior="Manual" Focusable="True"></MediaElement>			
-		</StackPanel>
+		<MediaElement Grid.Row="1" Stretch="Uniform" Name="Media" LoadedBehavior="Manual" Focusable="True"></MediaElement>
 
 		<StackPanel Grid.Row="1" Name="TheEndPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
 			<TextBlock Name="TheEndText" Foreground="{StaticResource BorderColor}" TextWrapping="Wrap">!</TextBlock>
