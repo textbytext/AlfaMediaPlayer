@@ -16,4 +16,6 @@ History interface:
 ### WinUI 3 ( 117 MB )
 ![WinUI 3 Build](./images/winui-files.jpg)
 
-:)
+## Info
+Icons:
+https://fonts.google.com/icons
