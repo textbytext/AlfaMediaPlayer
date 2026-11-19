@@ -26,6 +26,7 @@
     <None Remove="images\delete.png" />
     <None Remove="images\file_open.png" />
     <None Remove="images\file_open.svg" />
+    <None Remove="images\left.png" />
     <None Remove="images\list.png" />
     <None Remove="images\list.svg" />
     <None Remove="images\pause.png" />
@@ -33,6 +34,7 @@
     <None Remove="images\play.png" />
     <None Remove="images\play_arrow.png" />
     <None Remove="images\play_arrow.svg" />
+    <None Remove="images\right.png" />
     <None Remove="images\save.png" />
   </ItemGroup>
 
@@ -57,6 +59,7 @@
     <Resource Include="images\file_open.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\left.png" />
     <Resource Include="images\list.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -66,6 +69,7 @@
     <Resource Include="images\play_arrow.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\right.png" />
     <Resource Include="images\save.png" />
   </ItemGroup>
 

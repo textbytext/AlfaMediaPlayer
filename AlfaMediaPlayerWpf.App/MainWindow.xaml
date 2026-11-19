@@ -67,6 +67,7 @@
 
 				<Button Grid.Column="2" VerticalAlignment="Top" Name="Dec5SecButton">
 					<StackPanel Orientation="Horizontal">
+						<Image Source="/images/left.png" Height="16"></Image>
 						<TextBlock>-5s</TextBlock>
 					</StackPanel>
 				</Button>
@@ -79,6 +80,7 @@
 				<Button Grid.Column="4" VerticalAlignment="Top" Name="Add5SecButton">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock>+5s</TextBlock>
+						<Image Source="/images/right.png" Height="16"></Image>
 					</StackPanel>
 				</Button>
 
