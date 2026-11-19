@@ -14,10 +14,9 @@
 			<RowDefinition Height="auto"></RowDefinition>
 			<RowDefinition Height="*"></RowDefinition>
 			<RowDefinition Height="auto"></RowDefinition>
-			<RowDefinition Height="auto"></RowDefinition>
 		</Grid.RowDefinitions>
 
-		<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="3">
+		<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="3,3,3,3">
 			<Button Name="OpenFileButton">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="/images/file_open.png" Height="16"></Image>
@@ -29,19 +28,19 @@
 					<Image Source="/images/list.png" Height="16"></Image>
 					<TextBlock>History</TextBlock>
 				</StackPanel>
-			</Button>			
+			</Button>
 		</StackPanel>
 
-		<MediaElement Grid.Row="1" Stretch="Uniform" Name="Media" LoadedBehavior="Manual" Focusable="True"></MediaElement>
+		<MediaElement Grid.Row="1" Stretch="Uniform" Name="Media" LoadedBehavior="Manual"/>
 
-		<StackPanel Grid.Row="1" Name="TheEndPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
+		<StackPanel Grid.Row="1" Name="TheEndPanel" VerticalAlignment="Center" HorizontalAlignment="Left">
 			<TextBlock Name="TheEndText" Foreground="{StaticResource BorderColor}" TextWrapping="Wrap">!</TextBlock>
-		</StackPanel>		
+		</StackPanel>
 
-		<StackPanel Orientation="Vertical" Grid.Row="2" Name="ControlPanel">
+		<StackPanel Grid.Row="2" Orientation="Vertical" Name="ControlPanel">
 			<TextBlock Name="FileNameLable" TextWrapping="WrapWithOverflow" FontSize="23" TextAlignment="Center">file name ...</TextBlock>
 
-			<Grid Grid.Row="3">
+			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="auto"></ColumnDefinition>
 					<ColumnDefinition Width="auto"></ColumnDefinition>
@@ -53,7 +52,7 @@
 				</Grid.ColumnDefinitions>
 
 				<Button Grid.Column="0" Name="PlayButton" VerticalAlignment="Top" ToolTip="Play">
-					<StackPanel Orientation="Horizontal">						
+					<StackPanel Orientation="Horizontal">
 						<Image Source="/images/play_arrow.png" Height="16"></Image>
 						<TextBlock>Play</TextBlock>
 					</StackPanel>
@@ -67,7 +66,7 @@
 				</Button>
 
 				<Button Grid.Column="2" VerticalAlignment="Top" Name="Dec5SecButton">
-					<StackPanel Orientation="Horizontal">						
+					<StackPanel Orientation="Horizontal">
 						<TextBlock>-5s</TextBlock>
 					</StackPanel>
 				</Button>
@@ -97,14 +96,14 @@
 					</StackPanel>
 				</Button>
 			</Grid>
-		</StackPanel>	
-		
+		</StackPanel>
 
-		<UI:PopupContainerControl Grid.Row="0" Grid.RowSpan="4" Title="History" Visibility="Collapsed" x:Name="FileListPopup">
+
+		<UI:PopupContainerControl Grid.Row="0" Grid.RowSpan="3" Title="History" Visibility="Collapsed" x:Name="FileListPopup">
 			<UI:FileListControl/>
 		</UI:PopupContainerControl>
-		
-		<UI:PopupContainerControl Grid.Row="0" Grid.RowSpan="4" Title="Time Points" Visibility="Collapsed" x:Name="TimePointsPopup">
+
+		<UI:PopupContainerControl Grid.Row="0" Grid.RowSpan="3" Title="Time Points" Visibility="Collapsed" x:Name="TimePointsPopup">
 			<UI:TimePointsControl></UI:TimePointsControl>
 		</UI:PopupContainerControl>
 	</Grid>

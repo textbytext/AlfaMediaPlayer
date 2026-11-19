@@ -203,7 +203,7 @@ namespace AlfaMediaPlayerWpf.App
 					break;
 
 				case PlayerIncPosition pip:
-					_player.SetPosition(_player.Position.Add(pip.duration));
+					_player.SetPosition(_player.Position + pip.duration);
 					break;
 
 				case PlayerSetRepeat psr:
