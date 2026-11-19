@@ -7,6 +7,7 @@
 		<SolidColorBrush x:Key="TextForeground">White</SolidColorBrush>
 		<SolidColorBrush x:Key="TextBg">#111</SolidColorBrush>
 		<SolidColorBrush x:Key="BorderColor">#555</SolidColorBrush>
+		<SolidColorBrush x:Key="BackgroundHover">#444</SolidColorBrush>
 		<SolidColorBrush x:Key="ButtonBackground">#222</SolidColorBrush>
 		<Style TargetType="Label" x:Key="LabelRes">
 			<Setter Property="Foreground" Value="Wheat"></Setter>
@@ -33,7 +34,7 @@
 			<Style.Triggers>
 				<Trigger Property="IsMouseOver" Value="True">
 					<Setter Property="Cursor" Value="Hand"></Setter>
-					<Setter Property="Background" Value="#444"></Setter>
+					<Setter Property="Background" Value="{StaticResource BackgroundHover}"></Setter>
 				</Trigger>
 			</Style.Triggers>
 		</Style>
@@ -52,10 +53,11 @@
 			<Style.Triggers>
 				<Trigger Property="IsMouseOver" Value="True">
 					<Setter Property="Cursor" Value="Hand"></Setter>
+					<Setter Property="Background" Value="{StaticResource BackgroundHover}"></Setter>
 				</Trigger>
 				<Trigger Property="IsChecked" Value="True">
 					<Setter Property="Background" Value="#777"></Setter>
-				</Trigger>
+				</Trigger>				
 			</Style.Triggers>
 		</Style>
 	</Application.Resources>
