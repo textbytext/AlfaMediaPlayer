@@ -33,7 +33,7 @@
 
 		<MediaElement Grid.Row="1" Stretch="Uniform" Name="Media" LoadedBehavior="Manual"/>
 
-		<StackPanel Grid.Row="1" Name="TheEndPanel" VerticalAlignment="Center" HorizontalAlignment="Left">
+		<StackPanel Grid.Row="1" Name="TheEndPanel" VerticalAlignment="Center">
 			<TextBlock Name="TheEndText" Foreground="{StaticResource BorderColor}" TextWrapping="Wrap">!</TextBlock>
 		</StackPanel>
 
